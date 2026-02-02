@@ -7,7 +7,7 @@ import LazyImage from '@/components/LazyImage'
 import PoweredBy from '@/components/PoweredBy'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CONFIG from '../config'
 import SocialButton from './SocialButton'
 
@@ -56,9 +56,9 @@ const Footer = ({ title }) => {
                     {group?.menus?.map((menu, index) => {
                       return (
                         <div key={index}>
-                          <SmartLink href={menu.href} className='hover:underline'>
+                          <Link href={menu.href} className='hover:underline'>
                             {menu.title}
-                          </SmartLink>
+                          </Link>
                         </div>
                       )
                     })}

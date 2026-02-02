@@ -1,7 +1,7 @@
 import { AdSlot } from '@/components/GoogleAdsense'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import CONFIG from '../config'
 import { BlogItem } from './BlogItem'
@@ -49,7 +49,7 @@ export default function BlogListPage(props) {
       </div>
 
       <div className='flex justify-between text-xs mt-1'>
-        <SmartLink
+        <Link
           href={{
             pathname:
               currentPage - 1 === 1
@@ -59,15 +59,15 @@ export default function BlogListPage(props) {
           }}
           className={`${showPrev ? 'text-blue-600 border-b border-blue-400 visible ' : ' invisible bg-gray pointer-events-none '} no-underline pb-1 px-3`}>
           NEWER POSTS <i className='fa-solid fa-arrow-left'></i>
-        </SmartLink>
-        <SmartLink
+        </Link>
+        <Link
           href={{
             pathname: `${pagePrefix}/page/${currentPage + 1}`,
             query: router.query.s ? { s: router.query.s } : {}
           }}
           className={`${showNext ? 'text-blue-600 border-b border-blue-400 visible' : ' invisible bg-gray pointer-events-none '} no-underline pb-1 px-3`}>
           OLDER POSTS <i className='fa-solid fa-arrow-right'></i>
-        </SmartLink>
+        </Link>
       </div>
     </div>
   )

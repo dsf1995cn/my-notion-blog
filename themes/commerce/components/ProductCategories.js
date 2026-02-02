@@ -1,5 +1,5 @@
 import { siteConfig } from '@/lib/config'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CONFIG from '../config'
 
 export default function ProductCategories(props) {
@@ -21,14 +21,14 @@ export default function ProductCategories(props) {
           className={'flex flex-col space-y-2 text-start'}>
           {categoryOptions?.map(category => {
             return (
-              <SmartLink
+              <Link
                 key={`${category.name}`}
                 title={`${category.name}`}
                 href={`/category/${category.name}`}
                 className='hover:text-[#D2232A]'
                 passHref>
                 {category.name}
-              </SmartLink>
+              </Link>
             )
           })}
         </nav>

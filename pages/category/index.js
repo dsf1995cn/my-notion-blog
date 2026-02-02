@@ -2,6 +2,7 @@ import BLOG from '@/blog.config'
 import { siteConfig } from '@/lib/config'
 import { getGlobalData } from '@/lib/db/getSiteData'
 import { DynamicLayout } from '@/themes/theme'
+import { useRouter } from 'next/router'
 
 /**
  * 分类首页
@@ -9,10 +10,9 @@ import { DynamicLayout } from '@/themes/theme'
  * @returns
  */
 export default function Category(props) {
+  const router = useRouter()
   const theme = siteConfig('THEME', BLOG.THEME, props.NOTION_CONFIG)
-  return (
-    <DynamicLayout theme={theme} layoutName='LayoutCategoryIndex' {...props} />
-  )
+  return <DynamicLayout theme={theme} router={router} {...props} />
 }
 
 export async function getStaticProps({ locale }) {

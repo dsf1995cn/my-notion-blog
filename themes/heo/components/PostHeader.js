@@ -4,7 +4,7 @@ import NotionIcon from '@/components/NotionIcon'
 import WordCount from '@/components/WordCount'
 import { siteConfig } from '@/lib/config'
 import { formatDateFmt } from '@/lib/utils/formatDate'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import WavesArea from './WavesArea'
 
 /**
@@ -31,8 +31,9 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
           height: 100%;
           top: 0;
           left: 0;
-          box-shadow: 110px -130px 500px 100px
-            ${isDarkMode ? '#CA8A04' : '#0060e0'} inset;
+          box-shadow: 110px -130px 500px 100px ${isDarkMode
+              ? '#CA8A04'
+              : '#0060e0'} inset;
         }
       `}</style>
 
@@ -60,7 +61,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
           <div className='flex justify-center md:justify-start items-center gap-4'>
             {post.category && (
               <>
-                <SmartLink
+                <Link
                   href={`/category/${post.category}`}
                   className='mr-4'
                   passHref
@@ -68,14 +69,14 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
                   <div className='cursor-pointer font-sm font-bold px-3 py-1 rounded-lg  hover:bg-white text-white bg-blue-500 dark:bg-yellow-500 hover:text-blue-500 duration-200 '>
                     {post.category}
                   </div>
-                </SmartLink>
+                </Link>
               </>
             )}
 
             {post.tagItems && (
               <div className='hidden md:flex justify-center flex-nowrap overflow-x-auto'>
                 {post.tagItems.map((tag, index) => (
-                  <SmartLink
+                  <Link
                     key={index}
                     href={`/tag/${encodeURIComponent(tag.name)}`}
                     passHref
@@ -86,7 +87,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
                       <HashTag className='text-gray-200 stroke-2 mr-0.5 w-3 h-3' />{' '}
                       {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
                     </div>
-                  </SmartLink>
+                  </Link>
                 ))}
               </div>
             )}
@@ -104,20 +105,17 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
           <section className='flex-wrap dark:text-gray-200 text-opacity-70 shadow-text-md flex text-sm  justify-center md:justify-start mt-4 text-white font-light leading-8'>
             <div className='flex justify-center '>
               <div className='mr-2'>
-                <WordCount
-                  wordCount={post.wordCount}
-                  readTime={post.readTime}
-                />
+                <WordCount />
               </div>
               {post?.type !== 'Page' && (
                 <>
-                  <SmartLink
+                  <Link
                     href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
                     passHref
                     className='pl-1 mr-2 cursor-pointer hover:underline'>
                     <i className='fa-regular fa-calendar'></i>{' '}
                     {post?.publishDay}
-                  </SmartLink>
+                  </Link>
                 </>
               )}
 

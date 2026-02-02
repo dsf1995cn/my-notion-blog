@@ -2,7 +2,7 @@ import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 // import Image from 'next/image'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 /**
@@ -38,7 +38,7 @@ const PostGroupLatest = props => {
             : siteInfo?.pageCover
 
           return (
-            <SmartLink
+            <Link
               key={post.id}
               title={post.title}
               href={`${siteConfig('SUB_PATH', '')}/${post.slug}`}
@@ -62,7 +62,7 @@ const PostGroupLatest = props => {
                   <div className='text-gray-500'>{post.lastEditedDay}</div>
                 </div>
               </div>
-            </SmartLink>
+            </Link>
           )
         })}
       </div>

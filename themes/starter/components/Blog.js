@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { siteConfig } from '@/lib/config'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 /**
  * 博文列表
@@ -41,13 +41,13 @@ export const Blog = ({ posts }) => {
                     data-wow-delay='.1s'>
                     <div className='mb-8 overflow-hidden rounded-[5px]'>
                       {item.pageCoverThumbnail && (
-                        <SmartLink href={item?.href} className='block'>
+                        <Link href={item?.href} className='block'>
                           <img
                             src={item.pageCoverThumbnail}
                             alt={item.title}
                             className='w-full transition group-hover:rotate-6 group-hover:scale-125'
                           />
-                        </SmartLink>
+                        </Link>
                       )}
                     </div>
                     <div>
@@ -55,11 +55,11 @@ export const Blog = ({ posts }) => {
                         {item.publishDay}
                       </span>
                       <h3>
-                        <SmartLink
+                        <Link
                           href={item?.href}
                           className='mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl'>
                           {item.title}
-                        </SmartLink>
+                        </Link>
                       </h3>
                       <p className='max-w-[370px] text-base text-body-color dark:text-dark-6'>
                         {item.summary}

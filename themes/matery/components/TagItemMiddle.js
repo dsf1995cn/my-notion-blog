@@ -1,8 +1,8 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 const TagItemMiddle = ({ tag, selected = false }) => {
   return (
-      <SmartLink
+      <Link
           key={tag}
           href={selected ? '/' : `/tag/${encodeURIComponent(tag.name)}`}
           passHref
@@ -13,7 +13,7 @@ const TagItemMiddle = ({ tag, selected = false }) => {
               {selected && <i className='mr-1 fas fa-tag' />}
               {tag.name + (tag.count ? `(${tag.count})` : '')} </div>
 
-      </SmartLink>
+      </Link>
   )
 }
 

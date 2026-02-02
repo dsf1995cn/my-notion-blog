@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useGlobal } from '@/lib/global'
 
@@ -17,7 +17,7 @@ const PaginationSimple = ({ page, showNext }) => {
 
   return (
     <div className="my-10 flex justify-between font-medium text-black dark:text-gray-100 space-x-2">
-      <SmartLink
+      <Link
         href={{
           pathname:
             currentPage === 2
@@ -32,8 +32,8 @@ const PaginationSimple = ({ page, showNext }) => {
         } text-center w-full duration-200 px-4 py-2 hover:border-black border-b-2 hover:font-bold`}>
         ←{locale.PAGINATION.PREV}
 
-      </SmartLink>
-      <SmartLink
+      </Link>
+      <Link
         href={{
           pathname: `${pagePrefix}/page/${currentPage + 1}`,
           query: router.query.s ? { s: router.query.s } : {}
@@ -45,7 +45,7 @@ const PaginationSimple = ({ page, showNext }) => {
         } text-center w-full duration-200 px-4 py-2 hover:border-black border-b-2 hover:font-bold`}>
 
         {locale.PAGINATION.NEXT}→
-      </SmartLink>
+      </Link>
     </div>
   )
 }

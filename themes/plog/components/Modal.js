@@ -2,7 +2,7 @@ import { ArrowPath, ChevronLeft, ChevronRight } from '@/components/HeroIcons'
 import LazyImage from '@/components/LazyImage'
 import { compressImage } from '@/lib/notion/mapImage'
 import { Dialog, Transition } from '@headlessui/react'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { Fragment, useRef, useState } from 'react'
 import { usePlogGlobal } from '..'
 
@@ -105,7 +105,7 @@ export default function Modal(props) {
 
                 {/* </div> */}
 
-                <SmartLink href={modalContent?.href}>
+                <Link href={modalContent?.href}>
                   <LazyImage
                     onLoad={handleImageLoad}
                     placeholderSrc={thumbnail}
@@ -113,7 +113,7 @@ export default function Modal(props) {
                     ref={imgRef}
                     className={`w-full select-none max-w-7xl max-h-[90vh] shadow-xl  animate__animated animate__fadeIn'`}
                   />
-                </SmartLink>
+                </Link>
 
                 <>
                   <div className='absolute bottom-0 left-0 m-4 z-20'>
@@ -134,11 +134,11 @@ export default function Modal(props) {
 
                     {modalContent?.category && (
                       <div className='flex'>
-                        <SmartLink
+                        <Link
                           href={`/category/${modalContent?.category}`}
                           className='text-xs rounded-lg mt-3 px-2 py-1 bg-black bg-opacity-20 text-white hover:bg-blue-700 hover:text-white duration-200'>
                           {modalContent?.category}
-                        </SmartLink>
+                        </Link>
                       </div>
                     )}
                   </div>

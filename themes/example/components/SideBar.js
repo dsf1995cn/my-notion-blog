@@ -2,7 +2,7 @@ import Live2D from '@/components/Live2D'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import dynamic from 'next/dynamic'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CONFIG from '../config'
 import Announcement from './Announcement'
 import Catalog from './Catalog'
@@ -53,7 +53,7 @@ export const SideBar = props => {
           <ul className='list-reset leading-normal'>
             {categoryOptions?.map(category => {
               return (
-                <SmartLink
+                <Link
                   key={category.name}
                   href={`/category/${category.name}`}
                   passHref
@@ -66,7 +66,7 @@ export const SideBar = props => {
                       {category.name}({category.count})
                     </a>
                   </li>
-                </SmartLink>
+                </Link>
               )
             })}
           </ul>
@@ -83,7 +83,7 @@ export const SideBar = props => {
           <ul className='list-reset leading-normal'>
             {latestPosts?.map(p => {
               return (
-                <SmartLink key={p.id} href={`/${p.slug}`} passHref legacyBehavior>
+                <Link key={p.id} href={`/${p.slug}`} passHref legacyBehavior>
                   <li>
                     {' '}
                     <a
@@ -92,7 +92,7 @@ export const SideBar = props => {
                       {p.title}
                     </a>
                   </li>
-                </SmartLink>
+                </Link>
               )
             })}
           </ul>

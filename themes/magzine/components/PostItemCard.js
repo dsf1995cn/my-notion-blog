@@ -3,7 +3,7 @@ import NotionIcon from '@/components/NotionIcon'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { formatDateFmt } from '@/lib/utils/formatDate'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CategoryItem from './CategoryItem'
 
 /**
@@ -17,7 +17,7 @@ const PostItemCard = ({ post }) => {
     <div key={post.id} className='mb-6 max-w-screen-3xl'>
       <div className='flex flex-col space-y-3'>
         {siteConfig('MAGZINE_POST_LIST_COVER') && (
-          <SmartLink
+          <Link
             href={post?.href}
             passHref
             className={
@@ -31,13 +31,13 @@ const PostItemCard = ({ post }) => {
                 className='w-full h-40 aspect-video object-cover'
               />
             </div>
-          </SmartLink>
+          </Link>
         )}
         {siteConfig('MAGZINE_POST_LIST_CATEGORY') && (
           <CategoryItem category={post.category} />
         )}
 
-        <SmartLink
+        <Link
           href={post?.href}
           passHref
           className={
@@ -49,7 +49,7 @@ const PostItemCard = ({ post }) => {
             )}
             {post.title}
           </h2>
-        </SmartLink>
+        </Link>
 
         <div className='text-sm'>
           {formatDateFmt(post.publishDate, 'yyyy-MM')}

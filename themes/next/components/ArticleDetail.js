@@ -7,14 +7,14 @@ import WWAds from '@/components/WWAds'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { formatDateFmt } from '@/lib/utils/formatDate'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import CONFIG from '../config'
 import ArticleCopyright from './ArticleCopyright'
 import BlogAround from './BlogAround'
 import RecommendPosts from './RecommendPosts'
 import TagItem from './TagItem'
-import WordCount from '@/components/WordCount'
+import WordCount from './WordCount'
 
 /**
  *
@@ -69,7 +69,7 @@ export default function ArticleDetail(props) {
               <div className='flex flex-wrap justify-center'>
                 {post?.type !== 'Page' && (
                   <>
-                    <SmartLink
+                    <Link
                       href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
                       passHref
                       legacyBehavior>
@@ -77,7 +77,7 @@ export default function ArticleDetail(props) {
                         <i className='far fa-calendar mr-1' />{' '}
                         {post?.publishDay}
                       </div>
-                    </SmartLink>
+                    </Link>
                     <span className='mr-2'>
                       {' '}
                       | <i className='far fa-calendar-check mr-2' />
@@ -92,7 +92,7 @@ export default function ArticleDetail(props) {
                 )}
               </div>
 
-              <WordCount wordCount={post.wordCount} readTime={post.readTime} />
+              <WordCount />
             </section>
           </header>
         )}
@@ -127,12 +127,12 @@ export default function ArticleDetail(props) {
               {post.category && (
                 <>
                   <div className='cursor-pointer my-auto text-md mr-2 hover:text-black dark:hover:text-white border-b dark:text-gray-500 border-dashed'>
-                    <SmartLink href={`/category/${post.category}`} legacyBehavior>
+                    <Link href={`/category/${post.category}`} legacyBehavior>
                       <a>
                         <i className='mr-1 far fa-folder-open' />{' '}
                         {post.category}
                       </a>
-                    </SmartLink>
+                    </Link>
                   </div>
                 </>
               )}

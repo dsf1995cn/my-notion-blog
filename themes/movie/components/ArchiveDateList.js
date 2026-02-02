@@ -1,6 +1,6 @@
 import { useGlobal } from '@/lib/global'
 import { formatDateFmt } from '@/lib/utils/formatDate'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 export default function ArchiveDateList(props) {
   const postsSortByDate = Object.create(props.allNavPages)
@@ -24,12 +24,12 @@ export default function ArchiveDateList(props) {
       {dates?.map((date, index) => {
         return (
           <div key={index}>
-            <SmartLink
+            <Link
               href={`/archive#${date}`}
               className="hover:underline dark:text-green-500"
             >
               {date}
-            </SmartLink>
+            </Link>
           </div>
         )
       })}

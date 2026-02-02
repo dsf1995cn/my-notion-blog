@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useGlobal } from '@/lib/global'
 
 const CategoryList = ({ currentCategory, categoryOptions }) => {
@@ -13,7 +13,7 @@ const CategoryList = ({ currentCategory, categoryOptions }) => {
       {categoryOptions?.map(category => {
         const selected = category.name === currentCategory
         return (
-          <SmartLink
+          <Link
             key={category.name}
             href={`/category/${category.name}`}
             passHref
@@ -30,7 +30,7 @@ const CategoryList = ({ currentCategory, categoryOptions }) => {
                 {`${category.name} (${category.count})`}
               </a>
             </li>
-          </SmartLink>
+          </Link>
         )
       })}
     </ul>

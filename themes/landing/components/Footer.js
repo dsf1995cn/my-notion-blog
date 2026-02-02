@@ -1,5 +1,5 @@
 import { subscribeToNewsletter } from '@/lib/plugins/mailchimp'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import CONFIG from '../config'
 import Logo from './Logo'
@@ -45,7 +45,7 @@ export default function Footer() {
                             <Logo />
                         </div>
                         <div className="text-sm text-gray-600">
-                            <SmartLink href="/terms-of-use" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">服务条款</SmartLink> · <SmartLink href="/privacy-policy" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">隐私政策</SmartLink>
+                            <Link href="/terms-of-use" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">服务条款</Link> · <Link href="/privacy-policy" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">隐私政策</Link>
                         </div>
                     </div>
 

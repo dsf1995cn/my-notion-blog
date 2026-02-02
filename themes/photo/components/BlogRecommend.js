@@ -1,7 +1,7 @@
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CONFIG from '../config'
 
 /**
@@ -13,7 +13,7 @@ export default function BlogRecommend(props) {
   const { recommendPosts, siteInfo } = props
   const { locale } = useGlobal()
   if (
-    !siteConfig('PHOTO_ARTICLE_RECOMMEND', null, CONFIG) ||
+    !siteConfig('MOVIE_ARTICLE_RECOMMEND', null, CONFIG) ||
     !recommendPosts ||
     recommendPosts.length === 0
   ) {
@@ -35,7 +35,7 @@ export default function BlogRecommend(props) {
             : siteInfo?.pageCover
 
           return (
-            <SmartLink
+            <Link
               key={post.id}
               title={post.title}
               href={post?.href}
@@ -57,7 +57,7 @@ export default function BlogRecommend(props) {
                   className='absolute top-0 w-full h-full object-cover object-center group-hover:scale-110 group-hover:brightness-50 transform duration-200'
                 />
               </div>
-            </SmartLink>
+            </Link>
           )
         })}
       </div>

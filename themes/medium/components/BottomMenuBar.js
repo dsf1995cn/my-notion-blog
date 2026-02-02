@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useMediumGlobal } from '..'
 import JumpToTopButton from './JumpToTopButton'
 
@@ -17,11 +17,11 @@ export default function BottomMenuBar({ post, className }) {
         className
       }>
       <div className='flex justify-between h-full shadow-card'>
-        <SmartLink href='/search' passHref legacyBehavior>
+        <Link href='/search' passHref legacyBehavior>
           <div className='flex w-full items-center justify-center cursor-pointer'>
             <i className='fas fa-search' />
           </div>
-        </SmartLink>
+        </Link>
         <div className='flex w-full items-center justify-center cursor-pointer z-20'>
           <JumpToTopButton />
         </div>
@@ -33,11 +33,11 @@ export default function BottomMenuBar({ post, className }) {
           </div>
         )}
         {!showTocButton && (
-          <SmartLink href='/' passHref legacyBehavior>
+          <Link href='/' passHref legacyBehavior>
             <div className='flex w-full items-center justify-center cursor-pointer'>
               <i className='fas fa-home' />
             </div>
-          </SmartLink>
+          </Link>
         )}
       </div>
     </div>

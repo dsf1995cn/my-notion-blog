@@ -14,7 +14,8 @@ export default function LoadingCover() {
     if (onLoading) {
       setIsVisible(true)
     } else {
-      setIsVisible(false)
+      const timeout = setTimeout(() => setIsVisible(false), 1800) // 等待淡出动画结束
+      return () => clearTimeout(timeout)
     }
   }, [onLoading])
 

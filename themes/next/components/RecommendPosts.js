@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useGlobal } from '@/lib/global'
 import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
@@ -18,11 +18,11 @@ const RecommendPosts = ({ recommendPosts }) => {
         <ul className="font-light text-sm">
           {recommendPosts.map(post => (
             <li className="py-1" key={post.id}>
-              <SmartLink href={`/${post.slug}`} className="cursor-pointer hover:underline">
+              <Link href={`/${post.slug}`} className="cursor-pointer hover:underline">
 
                 {post.title}
 
-              </SmartLink>
+              </Link>
             </li>
           ))}
         </ul>

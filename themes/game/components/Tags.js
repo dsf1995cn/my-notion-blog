@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 const Tags = props => {
   const { tagOptions, tag } = props
@@ -19,14 +19,14 @@ const Tags = props => {
                   : 'bg-gray-100 border-gray-100 text-gray-400 dark:bg-night dark:border-gray-800'
               }`}
             >
-              <SmartLink
+              <Link
                 key={tag.id}
                 href={selected ? '/search' : `/tag/${encodeURIComponent(tag.name)}`}
                 className="px-4 py-2 block">
 
                 {`${tag.name} (${tag.count})`}
 
-              </SmartLink>
+              </Link>
             </li>
           )
         })}

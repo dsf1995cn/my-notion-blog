@@ -1,5 +1,5 @@
 import NavPostListEmpty from './NavPostListEmpty'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 /**
  * 博客列表滚动分页
@@ -18,7 +18,7 @@ const NavPostList = (props) => {
               // const selected = currentCategory === category.name
               const selected = false
               return (
-                    <SmartLink
+                    <Link
                         key={category.name}
                         href={`/category/${category.name}`}
                         passHref
@@ -29,7 +29,7 @@ const NavPostList = (props) => {
 
                         <div> <i className={`mr-2 fas ${selected ? 'fa-folder-open' : 'fa-folder'}`} />{category.name}({category.count})</div>
 
-                    </SmartLink>
+                    </Link>
               )
             })}
         </div>

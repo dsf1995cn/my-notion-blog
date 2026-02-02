@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useState } from 'react'
 
 export const MenuItemDrop = ({ link }) => {
@@ -19,9 +19,9 @@ export const MenuItemDrop = ({ link }) => {
         onMouseOut={() => changeShow(false)}>
         {!hasSubMenu && (
           <div className='block text-black dark:text-gray-50 nav'>
-            <SmartLink href={link?.href} target={link?.target}>
+            <Link href={link?.href} target={link?.target}>
               {link?.icon && <i className={link?.icon} />} {link?.name}
-            </SmartLink>
+            </Link>
           </div>
         )}
 
@@ -42,12 +42,12 @@ export const MenuItemDrop = ({ link }) => {
                 <div
                   key={index}
                   className='not:last-child:border-b-0 border-b text-gray-700 dark:text-gray-200  hover:bg-gray-50 dark:hover:bg-gray-900 tracking-widest transition-all duration-200  dark:border-gray-800 py-3 pr-6 pl-3'>
-                  <SmartLink href={sLink.href} target={link?.target}>
+                  <Link href={sLink.href} target={link?.target}>
                     <span className='text-sm text-nowrap font-extralight'>
                       {link?.icon && <i className={sLink?.icon}> &nbsp; </i>}
                       {sLink.title}
                     </span>
-                  </SmartLink>
+                  </Link>
                 </div>
               )
             })}

@@ -3,7 +3,7 @@ import NotionIcon from '@/components/NotionIcon'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { formatDateFmt } from '@/lib/utils/formatDate'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import TagItemMini from './TagItemMini'
 
 /**
@@ -38,14 +38,14 @@ export default function PostHero({ post, siteInfo }) {
           <div className='mb-3 flex justify-center'>
             {post.category && (
               <>
-                <SmartLink
+                <Link
                   href={`/category/${post.category}`}
                   passHref
                   legacyBehavior>
                   <div className='cursor-pointer px-2 py-1 mb-2 border rounded-sm dark:border-white text-sm font-medium hover:underline duration-200 shadow-text-md text-white'>
                     {post.category}
                   </div>
-                </SmartLink>
+                </Link>
               </>
             )}
           </div>
@@ -62,12 +62,12 @@ export default function PostHero({ post, siteInfo }) {
             <div className='flex justify-center dark:text-gray-200 text-opacity-70'>
               {post?.type !== 'Page' && (
                 <>
-                  <SmartLink
+                  <Link
                     href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
                     passHref
                     className='pl-1 mr-2 cursor-pointer hover:underline'>
                     {locale.COMMON.POST_TIME}: {post?.publishDay}
-                  </SmartLink>
+                  </Link>
                 </>
               )}
               <div className='pl-1 mr-2'>

@@ -3,11 +3,12 @@ import { getDataFromCache } from '@/lib/cache/cache_manager'
 import { siteConfig } from '@/lib/config'
 import { getGlobalData } from '@/lib/db/getSiteData'
 import { DynamicLayout } from '@/themes/theme'
-import { getPageContentText } from '@/lib/notion/getPageContentText'
+import { useRouter } from 'next/router'
 
 const Index = props => {
+  const router = useRouter()
   const theme = siteConfig('THEME', BLOG.THEME, props.NOTION_CONFIG)
-  return <DynamicLayout theme={theme} layoutName='LayoutSearch' {...props} />
+  return <DynamicLayout theme={theme} router={router} {...props} />
 }
 
 /**
@@ -52,12 +53,56 @@ export async function getStaticProps({ params: { keyword }, locale }) {
   }
 }
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return {
-    paths: [{ params: { keyword: 'NotionNext' } }],
+    paths: [{ params: { keyword: BLOG.TITLE } }],
     fallback: true
   }
 }
+
+/**
+ * 将对象的指定字段拼接到字符串
+ * @param sourceTextArray
+ * @param targetObj
+ * @param key
+ * @returns {*}
+ */
+function appendText(sourceTextArray, targetObj, key) {
+  if (!targetObj) {
+    return sourceTextArray
+  }
+  const textArray = targetObj[key]
+  const text = textArray ? getTextContent(textArray) : ''
+  if (text && text !== 'Untitled') {
+    return sourceTextArray.concat(text)
+  }
+  return sourceTextArray
+}
+
+/**
+ * 递归获取层层嵌套的数组
+ * @param {*} textArray
+ * @returns
+ */
+function getTextContent(textArray) {
+  if (typeof textArray === 'object' && isIterable(textArray)) {
+    let result = ''
+    for (const textObj of textArray) {
+      result = result + getTextContent(textObj)
+    }
+    return result
+  } else if (typeof textArray === 'string') {
+    return textArray
+  }
+}
+
+/**
+ * 对象是否可以遍历
+ * @param {*} obj
+ * @returns
+ */
+const isIterable = obj =>
+  obj != null && typeof obj[Symbol.iterator] === 'function'
 
 /**
  * 在内存缓存中进行全文索引
@@ -81,12 +126,12 @@ async function filterByMemCache(allPosts, keyword) {
         : ''
     const articleInfo = post.title + post.summary + tagContent + categoryContent
     let hit = articleInfo.toLowerCase().indexOf(keyword) > -1
-    const contentTextList = getPageContentText(post, page)
+    const indexContent = getPageContentText(post, page)
     // console.log('全文搜索缓存', cacheKey, page != null)
     post.results = []
     let hitCount = 0
-    for (const i of contentTextList) {
-      const c = contentTextList[i]
+    for (const i in indexContent) {
+      const c = indexContent[i]
       if (!c) {
         continue
       }
@@ -106,6 +151,20 @@ async function filterByMemCache(allPosts, keyword) {
     }
   }
   return filterPosts
+}
+
+export function getPageContentText(post, pageBlockMap) {
+  let indexContent = []
+  // 防止搜到加密文章的内容
+  if (pageBlockMap && pageBlockMap.block && !post.password) {
+    const contentIds = Object.keys(pageBlockMap.block)
+    contentIds.forEach(id => {
+      const properties = pageBlockMap?.block[id]?.value?.properties
+      indexContent = appendText(indexContent, properties, 'title')
+      indexContent = appendText(indexContent, properties, 'caption')
+    })
+  }
+  return indexContent.join('')
 }
 
 export default Index

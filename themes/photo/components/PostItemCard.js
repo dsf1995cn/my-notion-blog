@@ -3,7 +3,7 @@ import NotionIcon from '@/components/NotionIcon'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { formatDateFmt } from '@/lib/utils/formatDate'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 /**
  * 普通的博客卡牌
@@ -25,7 +25,7 @@ const PostItemCard = ({ post, className }) => {
         </div>
 
         <div className='text-center'>
-          <SmartLink
+          <Link
             href={post?.href}
             passHref
             className={
@@ -37,15 +37,15 @@ const PostItemCard = ({ post, className }) => {
               )}
               {post?.title}
             </h2>
-          </SmartLink>
+          </Link>
 
           {/* 发布日期 */}
-          <SmartLink
+          <Link
             className='text-sm'
             href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
             passHref>
             {formatDateFmt(post?.publishDate, 'yyyy-MM')}
-          </SmartLink>
+          </Link>
         </div>
       </div>
     </div>

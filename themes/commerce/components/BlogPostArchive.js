@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { siteConfig } from '@/lib/config'
 
 /**
@@ -29,14 +29,14 @@ const BlogPostArchive = ({ posts = [], archiveTitle }) => {
               <div id={post?.publishDay}>
                 <span className="text-gray-400">{post.date?.start_date}</span>{' '}
                 &nbsp;
-                <SmartLink
+                <Link
                   href={`${siteConfig('SUB_PATH', '')}/${post.slug}`}
                   passHref
                   className="dark:text-gray-400  dark:hover:text-red-300 overflow-x-hidden hover:underline cursor-pointer text-gray-600">
 
                   {post.title}
 
-                </SmartLink>
+                </Link>
               </div>
             </li>
           ))}

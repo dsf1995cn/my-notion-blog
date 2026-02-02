@@ -1,6 +1,6 @@
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CONFIG from '../config'
 
 /**
@@ -12,9 +12,9 @@ export default function LogoBar(props) {
   const { siteInfo } = props
   return (
     <div id='logo-wrapper' className='w-full flex items-center mr-2'>
-      <SmartLink
+      <Link
         href={`/${siteConfig('GITBOOK_INDEX_PAGE', '', CONFIG)}`}
-        className='flex text-lg font-bold md:text-2xl dark:text-gray-200 items-center'>
+        className='flex text-lg font-bold md:text-2xl dark:text-gray-200'>
         <LazyImage
           src={siteInfo?.icon}
           width={24}
@@ -23,7 +23,7 @@ export default function LogoBar(props) {
           className='mr-2 hidden md:block '
         />
         {siteInfo?.title || siteConfig('TITLE')}
-      </SmartLink>
+      </Link>
     </div>
   )
 }

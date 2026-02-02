@@ -1,8 +1,8 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 export default function CategoryItem ({ selected, category, categoryCount }) {
   return (
-    <SmartLink
+    <Link
       href={`/category/${category}`}
       passHref
       className={(selected
@@ -13,6 +13,6 @@ export default function CategoryItem ({ selected, category, categoryCount }) {
       <div><i className={`mr-2 fas ${selected ? 'fa-folder-open' : 'fa-folder'}`} />{category} {categoryCount && `(${categoryCount})`}
       </div>
 
-    </SmartLink>
+    </Link>
   );
 }

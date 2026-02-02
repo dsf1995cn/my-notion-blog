@@ -1,6 +1,6 @@
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CONFIG from '../config'
 import TagItemMini from './TagItemMini'
 
@@ -44,12 +44,12 @@ const BlogPostArchive = ({ posts = [], archiveTitle, siteInfo }) => {
                 {/* 图片封面 */}
                 {showPageCover && (
                   <div>
-                    <SmartLink href={post?.href} passHref legacyBehavior>
+                    <Link href={post?.href} passHref legacyBehavior>
                       <LazyImage
                         className={'rounded-xl bg-center bg-cover w-40 h-24'}
                         src={post?.pageCoverThumbnail}
                       />
-                    </SmartLink>
+                    </Link>
                   </div>
                 )}
 
@@ -60,24 +60,24 @@ const BlogPostArchive = ({ posts = [], archiveTitle, siteInfo }) => {
                     {post?.category && (
                       <div
                         className={`flex items-center ${showPreview ? 'justify-center' : 'justify-start'} hidden md:block flex-wrap dark:text-gray-500 text-gray-600 `}>
-                        <SmartLink
+                        <Link
                           passHref
                           href={`/category/${post.category}`}
                           className='cursor-pointer text-xs font-normal menu-link hover:text-indigo-700  dark:text-gray-600 transform'>
                           {post.category}
-                        </SmartLink>
+                        </Link>
                       </div>
                     )}
 
                     {/* 标题 */}
-                    <SmartLink
+                    <Link
                       href={post?.href}
                       passHref
                       className={
                         ' group-hover:text-indigo-700 group-hover:dark:text-indigo-400 text-black dark:text-gray-100 dark:group-hover:text-yellow-600 line-clamp-2 replace cursor-pointer text-xl font-extrabold leading-tight'
                       }>
                       <span className='menu-link '>{post.title}</span>
-                    </SmartLink>
+                    </Link>
                   </div>
 
                   {/* 摘要 */}

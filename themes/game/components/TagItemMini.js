@@ -1,8 +1,8 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 const TagItemMini = ({ tag, selected = false }) => {
   return (
-    <SmartLink
+    <Link
       key={tag}
       href={selected ? '/' : `/tag/${encodeURIComponent(tag.name)}`}
       className={` rounded hover:text-white hover:bg-green-500 text-black dark:text-white dark:bg-gray-800 py-0.5 px-1 `}
@@ -14,7 +14,7 @@ const TagItemMini = ({ tag, selected = false }) => {
           {tag.count ? `${tag.count}` : ''}
         </span>
       </span>
-    </SmartLink>
+    </Link>
   )
 }
 

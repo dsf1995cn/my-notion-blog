@@ -1,7 +1,7 @@
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import throttle from 'lodash.throttle'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 export const BlogListScroll = props => {
@@ -59,11 +59,11 @@ export const BlogListScroll = props => {
       {postsToShow.map(p => (
         <article key={p.id} className='mb-12'>
           <h2 className='mb-4'>
-            <SmartLink
+            <Link
               href={`/${p.slug}`}
               className='text-black text-xl md:text-2xl no-underline hover:underline'>
               {p.title}
-            </SmartLink>
+            </Link>
           </h2>
 
           <div className='mb-4 text-sm text-gray-700'>

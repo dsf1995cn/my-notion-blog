@@ -1,6 +1,6 @@
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import CONFIG from '../config'
 
@@ -58,7 +58,7 @@ const MenuList = props => {
           const selected =
             router.pathname === link.href || router.asPath === link.href
           return (
-            <SmartLink
+            <Link
               key={`${link.href}`}
               title={link.href}
               href={link.href}
@@ -71,7 +71,7 @@ const MenuList = props => {
                 <div className={'ml-4'}>{link.name}</div>
               </div>
               {link.slot}
-            </SmartLink>
+            </Link>
           )
         } else {
           return null

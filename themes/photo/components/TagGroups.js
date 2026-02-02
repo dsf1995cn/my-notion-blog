@@ -1,5 +1,5 @@
 import { useGlobal } from '@/lib/global'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 /**
@@ -22,7 +22,7 @@ const TagGroups = ({ tagOptions, className }) => {
         {tagOptions.map((tag, index) => {
           const selected = currentTag === tag.name
           return (
-            <SmartLink
+            <Link
               passHref
               key={index}
               href={`/tag/${encodeURIComponent(tag.name)}`}
@@ -40,7 +40,7 @@ const TagGroups = ({ tagOptions, className }) => {
                   <></>
                 )}
               </div>
-            </SmartLink>
+            </Link>
           )
         })}
       </div>

@@ -1,5 +1,5 @@
 import NotionIcon from '@/components/NotionIcon'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import TagItem from './TagItem'
 import { siteConfig } from '@/lib/config'
 
@@ -15,12 +15,12 @@ export default function PostInfo(props) {
         <div>
           {post?.type !== 'Page' && (
             <>
-              <SmartLink
+              <Link
                 href={`/category/${post?.category}`}
                 passHref
                 className='cursor-pointer text-xs font-bold hover:underline mr-2'>
                 {post?.category}
-              </SmartLink>
+              </Link>
             </>
           )}
         </div>

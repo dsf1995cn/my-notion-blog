@@ -1,5 +1,5 @@
 import { useGlobal } from '@/lib/global'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 /**
  * 分类
@@ -18,7 +18,7 @@ const CategoryGroup = ({ currentCategory, categoryOptions }) => {
         {categoryOptions?.map((category, index) => {
           const selected = currentCategory === category.name
           return (
-            <SmartLink
+            <Link
               key={index}
               href={`/category/${category.name}`}
               passHref
@@ -31,7 +31,7 @@ const CategoryGroup = ({ currentCategory, categoryOptions }) => {
               <span>
                 {category.name} {category?.count && `(${category?.count})`}
               </span>
-            </SmartLink>
+            </Link>
           )
         })}
       </div>

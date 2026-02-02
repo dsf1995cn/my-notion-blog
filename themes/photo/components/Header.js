@@ -1,5 +1,5 @@
 import { siteConfig } from '@/lib/config'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import MenuHierarchical from './MenuHierarchical'
 
 /**
@@ -11,11 +11,11 @@ export const Header = props => {
     <>
       <header className='w-full px-8 h-20 z-30 flex lg:flex-row md:flex-col justify-center items-center'>
         {/* 左侧Logo */}
-        <SmartLink
+        <Link
           href='/'
           className='logo whitespace-nowrap text-2xl md:text-3xl text-gray-dark no-underline flex items-center'>
           {siteConfig('TITLE')}
-        </SmartLink>
+        </Link>
 
         {/* 右侧使用一个三级菜单 */}
         <div className='ml-6 mt-7'>

@@ -1,6 +1,6 @@
 import { siteConfig } from '@/lib/config'
 import { RecentComments } from '@waline/client'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 /**
@@ -44,14 +44,14 @@ const RecentCommentListForExample = props => {
               dangerouslySetInnerHTML={{ __html: comment.comment }}
             />
             <div className='dark:text-gray-400 text-gray-400  text-sm text-right cursor-pointer hover:text-red-500 hover:underline pt-1'>
-              <SmartLink
+              <Link
                 href={{
                   pathname: comment.url,
                   hash: comment.objectId,
                   query: { target: 'comment' }
                 }}>
                 --{comment.nick}
-              </SmartLink>
+              </Link>
             </div>
           </div>
         ))}

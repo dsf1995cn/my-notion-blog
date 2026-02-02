@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 
 /**
  * 悬浮在屏幕右下角,联系我的按钮
@@ -7,7 +7,7 @@ import SmartLink from '@/components/SmartLink'
  */
 const ContactButton = () => {
   return (
-    (<SmartLink
+    (<Link
       href='/about'
       className={'fixed right-10 bottom-40 animate__fadeInRight animate__animated animate__faster'}>
 
@@ -16,7 +16,7 @@ const ContactButton = () => {
         <i className='dark:text-gray-200 fas fa-info' title='about' />
       </span>
 
-    </SmartLink>)
+    </Link>)
   );
 }
 

@@ -1,6 +1,6 @@
 import FlipCard from '@/components/FlipCard'
 import { siteConfig } from '@/lib/config'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import CONFIG from '../config'
 
 /**
@@ -28,11 +28,11 @@ export default function TouchMeCard() {
           </div>
         }
         backContent={
-          <SmartLink href={siteConfig('MAGZINE_SOCIAL_CARD_URL', '#', CONFIG)}>
+          <Link href={siteConfig('MAGZINE_SOCIAL_CARD_URL', '#', CONFIG)}>
             <div className='font-[1000] text-xl h-full'>
               {siteConfig('MAGZINE_SOCIAL_CARD_TITLE_3')}
             </div>
-          </SmartLink>
+          </Link>
         }
       />
     </div>

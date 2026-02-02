@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import PostItemCard from './PostItemCard'
 import PostListEmpty from './PostListEmpty'
 import Swiper from './Swiper'
@@ -23,27 +23,27 @@ const PostListHorizontal = ({ title, href, posts, hasBg }) => {
         <div className='flex justify-between items-center py-6'>
           <h3 className='text-2xl'>{title}</h3>
           {href && (
-            <SmartLink
+            <Link
               className='hidden font-bold lg:block text-lg underline'
               href={href}>
               <span>查看全部</span>
               <i className='ml-2 fas fa-arrow-right' />
-            </SmartLink>
+            </Link>
           )}
         </div>
         {/* 列表 */}
-        <div className='hidden lg:grid grid-cols-1 lg:grid-cols-4 gap-4'>
+        <ul className='hidden lg:grid grid-cols-1 lg:grid-cols-4 gap-4'>
           {posts?.map((p, index) => {
             return <PostItemCard key={index} post={p} />
           })}
-        </div>
+        </ul>
         <div className='block lg:hidden px-2'>
           <Swiper posts={posts} />
           {href && (
-            <SmartLink className='lg:hidden block text-lg underline' href={href}>
+            <Link className='lg:hidden block text-lg underline' href={href}>
               <span>查看全部</span>
               <i className='ml-2 fas fa-arrow-right' />
-            </SmartLink>
+            </Link>
           )}
         </div>
       </div>

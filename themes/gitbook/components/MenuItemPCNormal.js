@@ -1,4 +1,4 @@
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export const MenuItemPCNormal = props => {
@@ -10,7 +10,7 @@ export const MenuItemPCNormal = props => {
   }
 
   return (
-    <SmartLink
+    <Link
       key={`${link.id}-${link.slug}`}
       title={link.name}
       href={link.href}
@@ -25,6 +25,6 @@ export const MenuItemPCNormal = props => {
         <div className='ml-2 whitespace-nowrap'>{link.name}</div>
       </div>
       {link.slot}
-    </SmartLink>
+    </Link>
   )
 }

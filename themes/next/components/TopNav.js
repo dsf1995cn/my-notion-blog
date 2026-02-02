@@ -1,6 +1,6 @@
 import { useGlobal } from '@/lib/global'
 import throttle from 'lodash.throttle'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import CategoryGroup from './CategoryGroup'
 import Collapse from '@/components/Collapse'
@@ -87,14 +87,14 @@ const TopNav = (props) => {
             <section className='mt-8'>
                 <div className='text-sm flex flex-nowrap justify-between font-light px-2'>
                     <div className='text-gray-600 dark:text-gray-200'><i className='mr-2 fas fa-th-list' />{locale.COMMON.CATEGORY}</div>
-                    <SmartLink
+                    <Link
                         href={'/category'}
                         passHref
                         className='mb-3 text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white hover:underline cursor-pointer'>
 
                         {locale.COMMON.MORE} <i className='fas fa-angle-double-right' />
 
-                    </SmartLink>
+                    </Link>
                 </div>
                 <CategoryGroup currentCategory={currentCategory} categories={categories} />
             </section>
@@ -104,14 +104,14 @@ const TopNav = (props) => {
             <section className='mt-4'>
                 <div className='text-sm py-2 px-2 flex flex-nowrap justify-between font-light dark:text-gray-200'>
                     <div className='text-gray-600 dark:text-gray-200'><i className='mr-2 fas fa-tag' />{locale.COMMON.TAGS}</div>
-                    <SmartLink
+                    <Link
                         href={'/tag'}
                         passHref
                         className='text-gray-500 hover:text-black  dark:hover:text-white hover:underline cursor-pointer'>
 
                         {locale.COMMON.MORE} <i className='fas fa-angle-double-right' />
 
-                    </SmartLink>
+                    </Link>
                 </div>
                 <div className='p-2'>
                     <TagGroups tags={tags} currentTag={currentTag} />

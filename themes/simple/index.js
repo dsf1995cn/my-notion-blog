@@ -6,7 +6,7 @@ import { useGlobal } from '@/lib/global'
 import { isBrowser } from '@/lib/utils'
 import { Transition } from '@headlessui/react'
 import dynamic from 'next/dynamic'
-import SmartLink from '@/components/SmartLink'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useRef } from 'react'
 import BlogPostBar from './components/BlogPostBar'
@@ -267,7 +267,6 @@ const LayoutSlug = props => {
 const Layout404 = props => {
   const { post } = props
   const router = useRouter()
-  const waiting404 = siteConfig('POST_WAITING_TIME_FOR_404') * 1000
   useEffect(() => {
     // 404
     if (!post) {
@@ -282,7 +281,7 @@ const Layout404 = props => {
             }
           }
         },
-        waiting404
+        siteConfig('POST_WAITING_TIME_FOR_404') * 1000
       )
     }
   }, [post])
@@ -301,7 +300,7 @@ const LayoutCategoryIndex = props => {
       <div id='category-list' className='duration-200 flex flex-wrap'>
         {categoryOptions?.map(category => {
           return (
-            <SmartLink
+            <Link
               key={category.name}
               href={`/category/${category.name}`}
               passHref
@@ -313,7 +312,7 @@ const LayoutCategoryIndex = props => {
                 <i className='mr-4 fas fa-folder' />
                 {category.name}({category.count})
               </div>
-            </SmartLink>
+            </Link>
           )
         })}
       </div>
@@ -334,7 +333,7 @@ const LayoutTagIndex = props => {
         {tagOptions.map(tag => {
           return (
             <div key={tag.name} className='p-2'>
-              <SmartLink
+              <Link
                 key={tag}
                 href={`/tag/${encodeURIComponent(tag.name)}`}
                 passHref
@@ -343,7 +342,7 @@ const LayoutTagIndex = props => {
                   <i className='mr-1 fas fa-tag' />{' '}
                   {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
                 </div>
-              </SmartLink>
+              </Link>
             </div>
           )
         })}
